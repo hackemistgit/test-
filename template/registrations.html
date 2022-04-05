@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="form_body">
+            <h1 class="text-center">Welcome To MPMF secure Covid Vaccine D-Tracker</h1>
+            <br>
+            <h2 class="text-center">Details about {{forms.name.data}}</h2>
+
+            <div class= "donor_details m-5">
+                <p><strong>Name:</strong> {{forms.name.data}}</p>
+                <p><strong>Gender:</strong> {{forms.gender.data}}</p>
+                <p><strong>Date Of Birth:</strong> {{forms.date_of_birth.data}}</p>
+                <p><strong>Blood Type:</strong> <span class="text-uppercase">{{forms.blood_group.data}}</span></p>
+                <p><strong>Phone Number:</strong> {{forms.phone_number.data}}</p>
+                <p><strong>Email:</strong> {{forms.email.data}}</p>
+                <p><strong>Priority:</strong> {{forms.Priority.data}}</p>
+                <p><strong>Address:</strong> {{forms.home_address.data}}</p>
+                <p><strong>AADHAR Number:</strong> {{forms.aadhar_num.data}}</p>
+                <p><strong>Any Diseases:</strong> {{forms.any_diseases.data}}</p>
+                <p><strong>Allergies:</strong> {{forms.allergies.data}}</p>
+                <p><strong>Cardiac:</strong> {{forms.cardiac.data}}</p>
+                <p><strong>Bleeding Disorders:</strong> {{forms.bleeding_disorders.data}}</p>
+                <p><strong>District:</strong> {{forms.District.data}}</p>
+        </div>
+
+            <h3 class="text-center">{{forms.name.data}} Your Registration Is Successful...</h3>
+
+        </div>
+
+    </div>
+
+
+
+
+{% endblock  %}

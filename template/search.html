@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <!-- Search -->
+    <div class="search">
+      
+      <form action="{% url 'donorlistsite' %}" method="POST">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            {{forms_search.select_blood_group}}
+           
+          </div>
+        <button type="submit" class="btn search_bt">Search</button>
+
+      </form>
+    </div>
+
+
+   {% endblock  %}

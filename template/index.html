@@ -1,0 +1,159 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="project">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+
+
+  <title>{{title}}</title>
+  
+
+
+  <!-- bootstrap file -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- bootstrap file-->
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+  </style>
+
+
+  <!-- message here -->
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
+
+  <!--_______________________________________________-->
+
+
+
+</head>
+
+<body class="container-fluid">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  
+  <header class="row">
+
+    <!-- navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" class="styleheader" href="{% url "homesite1" %}">MPMF Covid Vaccine D-Tracker</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNavBar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url "homesite1" %}">Home</a></li>
+            {% if user.is_authenticated %}
+    <li> <li class="nav-item">
+      <a class="nav-link font-weight-bolder" href="{% url 'dregsite' %}">VACCINE Registration</a>
+  </li>
+  <li class="nav-item font-weight-bolder">
+      <a class="nav-link" href="{% url 'searchsite1' %}">Search</a>
+  </li></li>
+    {% endif %}
+
+            {% if user.is_authenticated %}
+            <li><a href="{%url 'logout'%}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+            {% else %}
+            <li><a href="{% url "userregister" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
+            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <br/>
+  <br>
+  <br>
+  <div class="row">
+    {% block start %}
+    {% if user.is_authenticated %}
+    <center><h1>welcome, here {{username}}
+    </h1></center><h3 style="margin-left: 4%;"> This page is for less privilaged users..</h3>
+    <h2 style="margin-left: 4%;">You have the permission to input vaccined persons details and search district wise vaccined persons</h2>
+    <div class="row">
+      
+      <div class="card-columns">
+          
+    <div class="card  color2 ">
+      <div class="card-body ">
+          <h4 class="card-title">Vaccine Registration</h4>
+          <a  style="color: white;" href="{% url 'dregsite' %}">Click Here</a>
+      </div>
+      </div>
+
+      <div class="card color3">
+        <div class="card-body">
+            <h4 class="card-title">Search</h4>
+            <a style="color: white;"href="{% url 'searchsite1' %}">Click Here</a>
+  
+        </div>
+</div>
+</div>
+        </div>
+      
+<style>
+  .color2{
+    padding-left: 5%;
+    background-color: royalblue;
+    color: white;
+  }
+  .color3{
+    padding-left: 5%;
+    background-color: darkkhaki;
+    color: white;
+  }
+</style> 
+ 
+
+     
+    
+    {% else %}
+    <center><h1>log in, plz . . .</h1></center>
+    
+    {% endif %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>

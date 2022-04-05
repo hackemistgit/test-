@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0\">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper-1.14.7.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'photos/logo/searchlogo.jpg' %}">
+
+    <title>MPMF secure Covid Vaccine D-Tracker</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+
+<body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <div class="container-fluid">
+        <!-- head title -->
+        <header>
+            <h5 class="head text-white text-center p-3">MPMF secure Covid Vaccine D-Tracker</h5>
+        </header>
+
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-sm sticky-top color7">
+
+            <!-- logo -->
+            
+
+            <!-- navbar item -->
+            <div class="col ">
+                <ul class="navbar-nav flex-row-reverse">
+                    <li class="nav-item text-dark">
+                        <a class="nav-link font-weight-bolder" href="https://dashboard.kerala.gov.in/">Kerala : COVID-19 Battle
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bolder" href="user">Register/Login</a>
+                      </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link font-weight-bolder" href="#" data-toggle="dropdown">
+              Administration
+            </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item font-weight-bolder" href="/crazyfrog/">Hospital Login  </a>
+                            <a class="dropdown-item font-weight-bolder" href="/dcrazyfrog/">Health Department Login  </a>
+                        </div>
+                    </li>
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bolder" href="{%url 'logout'%}">Logout</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bolder" href="{% url 'dregsite' %}">Vaccine Registration</a>
+                    </li>
+                    <li class="nav-item font-weight-bolder">
+                        <a class="nav-link" href="{% url 'searchsite1' %}">Search</a>
+                    </li>
+                    
+           
+            
+                    {% endif %}
+                    <li class="nav-item font-weight-bolder">
+                        <a class="nav-link" href="{% url 'homesite1' %}">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+       
+        
+        <br>
+       <div class="container-fluid">
+           <h1>Global Covid 19 Data</h1>
+           <marquee behavior="" direction="left" class="color8">The data get updated every 3 hours as the site uses free api for fetching data...This site mainly provides the facility to manage Covid-19 vaccination.</marquee>
+<div class="row">
+     <div class="card-columns">
+         <div class="card col-md-12 color6">
+             
+             <div class="card-body">
+                 <h4 class="card-title">New Confirmed</h4>
+                 <p class="card-text number">{{globalSummary.NewConfirmed}}</p>
+             </div>
+            </div>
+            <div class="card col-md-12 color1">
+                <div class="card-body">
+                    <h4 class="card-title">Total Confirmed</h4>
+                    <p class="card-text number">{{globalSummary.TotalConfirmed}}</p>
+                </div>
+
+            </div>
+
+            <div class="card col-md-12  color5">
+                <div class="card-body">
+                    <h4 class="card-title">New Deaths</h4>
+                    <p class="card-text number">{{globalSummary.NewDeaths}}</p>
+                </div>
+                
+            </div>
+
+            <div class="card col md-12 col lg-3 color2">
+                <div class="card-body">
+                    <h4 class="card-title">Total Deaths</h4>
+                    <p class="card-text number">{{globalSummary.TotalDeaths}}</p>
+                </div>
+                
+            </div>
+
+            <div class="card col md-12 col lg-3 color3">
+                <div class="card-body">
+                    <h4 class="card-title">New Recovered</h4>
+                    <p class="card-text number">{{globalSummary.NewRecovered}}</p>
+                </div>
+            </div>
+
+            <div class="card col md-12 col lg-3 color4">
+                <div class="card-body">
+                    <h4 class="card-title">Total Recovered</h4>
+                    <p class="card-text number">{{globalSummary.TotalRecovered}}</p>
+                </div>
+                
+            </div>
+        </div>
+</div>
+<div>
+    <br>
+    <center>
+    <h1>Country wise Data</h1></center>
+    <br>
+
+    
+    <table class="table col-md-12 ">
+        <thead>
+            <tr>
+                <th>Sno.</th>
+                <th>
+                    country
+                </th>
+                <th>Total Confirmed</th>
+                <th>Total Deaths</th>
+                <th>Total Recovered</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in countries %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{c.Country}}</td>
+                <td>{{c.TotalConfirmed}}</td>
+                <td>{{c.TotalDeaths}}</td>
+                <td> {{c.TotalRecovered}}   </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+          
+           <style>
+               .color1{
+                   background-color: red;
+                    color: white;
+                }
+                .color5{
+                    background-color: rgb(0, 255, 64);
+                     color: white;
+                 }
+                 .color2{
+                    background-color: rgb(17, 0, 253);
+                     color: white;
+                 }
+                 .color3{
+                    background-color: rgb(255, 145, 0);
+                     color: white;
+                 }
+                 .color4{
+                    background-color: rgb(55, 0, 255);
+                     color: white;
+                 }
+                 .color6{
+                    background-color: rgb(255, 0, 255);
+                     color: white;
+                 }
+                 .color7{
+                    background-color: rgb(0, 255, 213);
+                     color: white;
+                 }
+                 .color8{
+                    background-color: rgb(255, 255, 255);
+                     color: rgb(252, 0, 0);
+                 }
+                 .number{
+                     font-weight: 300;
+                    float: right;
+                     font-size: 40px;
+                 }
+           </style>
+           
+           
+           
+         </div>
+     </div>
+
+        </div>
+
+        <!-- footer -->
+        <div class="footer clearfix">
+            <p class="text-center text-white p-2">
+                MPMF SECURE COVID VACCINE D TRACKER 
+                <br> Designed and Developed by:
+                  <br> Muhsin Bin Muhammed Muneer,
+                  <br> Vivek Vijayan , Asif Noushad.
+                <br>
+
+            </p>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
